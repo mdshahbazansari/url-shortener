@@ -1,8 +1,9 @@
-import dotenv from 'dotenv'
+import * as dotenv from 'dotenv'
 dotenv.config()
-import jwt from 'jsonwebtoken'
 
-import mongoose from 'mongoose'
+import * as jwt from 'jsonwebtoken'
+
+import * as mongoose from 'mongoose';
 mongoose
   .connect(process.env.MONGO_URL as string)
   .then(() => {
