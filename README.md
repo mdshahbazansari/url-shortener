@@ -1,7 +1,5 @@
 🚀 URL Shortener with Redis Caching
 
-
-
 📌 Overview
 
 A simple URL Shortener built with Node.js, Express, MongoDB, and Redis for caching. This project allows users to shorten URLs and track click analytics efficiently.
@@ -20,8 +18,6 @@ A simple URL Shortener built with Node.js, Express, MongoDB, and Redis for cachi
 
 🖼️ Screenshots
 
- 
-
 🛠️ Tech Stack
 
 Frontend: React, Ant Design
@@ -33,8 +29,6 @@ Database: MongoDB (Mongoose ODM)
 Caching: Redis (ioredis)
 
 Hosting: Render.com
-
-
 
 🚀 Setup Instructions
 
@@ -69,13 +63,13 @@ The server will run at http://localhost:8080
 POST /api/url/shorten
 
 {
-  "longUrl": "https://example.com"
+"longUrl": "https://example.com"
 }
 
 Response:
 
 {
-  "shortUrl": "http://localhost:8080/api/url/abc123"
+"shortUrl": "http://localhost:8080/api/url/abc123"
 }
 
 2️⃣ Redirect to Original URL
@@ -102,9 +96,26 @@ Your Name - Full Stack Developer
 
 ✅ User Authentication for Secure Access
 
+🖼️ Screenshots
+
+### Homepage
+
+![Homepage](./frontend/src//assets/login.png)
+
+### URL Shortening Form
+
+![Shorten URL](./frontend/src//assets/signup.png)
+
+### URL Analytics Page
+
+![Dashboard](./frontend/src//assets/dashboard.png)
+
+### URL Analytics Page
+
+![Analytics](./frontend/src//assets/allUrls.png)
+
 📝 License
 
 This project is open-source under the MIT License.
 
 Feel free to 🌟 Star this repository and contribute! 🚀
-
