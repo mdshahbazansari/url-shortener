@@ -15,7 +15,7 @@ const Signup = () => {
   const onFinish = async (values) => {
     try {
       values.mobile = '+' + values.mobile
-      const res = await axios.post(`${ENV.VITE_SERVER}/api/user/signup`, values)
+      const res = await axios.post('https://url-shortener-9mko.onrender.com/api/user/signup', values)
       message.success('Signup successful!')
       console.log(res.data)
       navigate('/login')

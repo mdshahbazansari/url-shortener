@@ -10,7 +10,7 @@ const Login = () => {
 
   const login = async (values) => {
     try {
-      await axios.post(`${ENV.VITE_SERVER}/api/user/login`, values, {
+      await axios.post('https://url-shortener-9mko.onrender.com/api/user/login', values, {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true,
       })
