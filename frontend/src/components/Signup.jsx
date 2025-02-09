@@ -1,11 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
+
 import { Form, Input, Button, message } from 'antd'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
 const ENV = import.meta.env
+axios.defaults.baseURL = ENV.VITE_SERVER
 
 const Signup = () => {
   const navigate = useNavigate()

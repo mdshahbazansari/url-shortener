@@ -3,20 +3,17 @@ import React from 'react'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 const ENV = import.meta.env
+axios.defaults.baseURL = ENV.VITE_SERVER
 
 const Login = () => {
   const navigate = useNavigate() // Use useNavigate instead of window.location
 
   const login = async (values) => {
     try {
-       await axios.post(
-        `${ENV.VITE_SERVER}/api/user/login`,
-        values,
-        {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true,
-        }
-      )
+      await axios.post(`${ENV.VITE_SERVER}/api/user/login`, values, {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true,
+      })
 
       navigate('/home')
       message.success('Login Successful')
