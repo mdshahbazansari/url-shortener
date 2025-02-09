@@ -18,7 +18,7 @@ const UrlList = () => {
     isLoading: urlLoading,
   } = useSWR(
     session?.id
-      ? `http://localhost:8080/api/url/analytics/${session.id}`
+      ? `/api/url/analytics/${session.id}`
       : null,
     fetcher
   )

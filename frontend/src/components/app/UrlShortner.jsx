@@ -7,6 +7,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import moment from 'moment'
+const ENV = import.meta.env
 
 const UrlShortner = () => {
   const [filteredInfo, setFilteredInfo] = useState({})
@@ -19,12 +20,7 @@ const UrlShortner = () => {
     data: urldata,
     error: urlErr,
     isLoading: urlLoading,
-  } = useSWR(
-    session?.id
-      ? `http://localhost:8080/api/url/analytics/${session.id}`
-      : null,
-    fetcher
-  )
+  } = useSWR(session?.id ? `/api/url/analytics/${session.id}` : null, fetcher)
 
   // Mapping the API data properly
   const data = urldata
@@ -119,18 +115,13 @@ const UrlShortner = () => {
 
   const createUrl = async (values) => {
     try {
-      const response = await axios.post(
-        'http://localhost:8080/api/url',
-        values,
-        {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true,
-        }
-      )
+      const response = await axios.post(`${ENV.VITE_SERVER}/api/url`, values, {
+        headers: { 'Content-Type': 'application/json' },
+      })
       const newUrlData = response.data
       mutate(
         session?.id
-          ? `http://localhost:8080/api/url/analytics/${session.id}`
+          ? `${ENV.VITE_SERVER}/api/url/analytics/${session.id}`
           : null,
         (existingData) =>
           existingData ? [...existingData, newUrlData] : [newUrlData]

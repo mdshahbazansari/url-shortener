@@ -5,6 +5,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { Button } from 'antd'
+const ENV = import.meta.env
 
 const Signup = () => {
   const user = {
@@ -22,7 +23,7 @@ const Signup = () => {
       e.preventDefault()
       signupForm.mobile = '+' + signupForm.mobile
       const res = await axios.post(
-        'http://localhost:8080/api/user/signup',
+        `${ENV.VITE_SERVER}/api/user/signup`,
         signupForm
       )
 

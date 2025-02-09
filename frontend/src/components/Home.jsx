@@ -9,6 +9,7 @@ import {
 } from '@ant-design/icons'
 
 import useSWR, { mutate } from 'swr'
+const ENV = import.meta.env
 import { Avatar, Layout, Menu, Tag, theme } from 'antd'
 import UrlShortner from './app/UrlShortner'
 import { useNavigate } from 'react-router-dom'
@@ -26,9 +27,7 @@ const Home = () => {
   // console.log(session)
 
   const handleLogout = async () => {
-    await axios.get('http://localhost:8080/api/user/logout', {
-      withCredentials: true,
-    })
+    await useSWR('/api/user/logout',fetcher)
     navigate('/login')
     toast.success('Logout success')
   }

@@ -2,6 +2,7 @@ import { Button, Card, Form, Input, message } from 'antd'
 import React from 'react'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
+const ENV = import.meta.env
 
 const Login = () => {
   const navigate = useNavigate() // Use useNavigate instead of window.location
@@ -9,7 +10,7 @@ const Login = () => {
   const login = async (values) => {
     try {
       const { data } = await axios.post(
-        'http://localhost:8080/api/user/login',
+        `${ENV.VITE_SERVER}/api/user/login`,
         values,
         {
           headers: { 'Content-Type': 'application/json' },

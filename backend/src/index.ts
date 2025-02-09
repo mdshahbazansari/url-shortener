@@ -3,7 +3,7 @@ dotenv.config()
 
 import * as jwt from 'jsonwebtoken'
 
-import * as mongoose from 'mongoose';
+import * as mongoose from 'mongoose'
 mongoose
   .connect(process.env.MONGO_URL as string)
   .then(() => {
@@ -20,18 +20,13 @@ import urlRouter from './url/urlRoutes'
 import express, { Request, Response } from 'express'
 import { Session } from './utils/session'
 import userRouter from './user/userRoutes'
-
+const PORT = 8080
 const app = express()
-app.listen(process.env.PORT, () => {
-  console.log(`Server run on PORT : ${process.env.PORT} 👈🏻`)
+app.listen(PORT, () => {
+  console.log(`Server run on PORT : ${PORT} 👈🏻`)
 })
 
-app.use(
-  cors({
-    origin: 'http://localhost:5173',
-    credentials: true,
-  })
-)
+app.use(cors())
 
 app.use(cookieParser())
 

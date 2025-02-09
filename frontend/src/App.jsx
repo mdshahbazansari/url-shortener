@@ -9,13 +9,14 @@ import Context from './util/Context'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import UrlList from './components/app/UrlList'
+const ENV = import.meta.env
 
 function App() {
   const [session, setSession] = useState(null)
 
   const getSession = async () => {
     try {
-      const { data } = await axios.get('http://localhost:8080/api/session', {
+      const { data } = await axios.get(`ENV.BACKEND_URL/api/session`, {
         withCredentials: true, 
       })
 
