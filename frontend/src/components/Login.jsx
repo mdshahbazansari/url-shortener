@@ -9,7 +9,7 @@ const Login = () => {
 
   const login = async (values) => {
     try {
-      const { data } = await axios.post(
+       await axios.post(
         `${ENV.VITE_SERVER}/api/user/login`,
         values,
         {
