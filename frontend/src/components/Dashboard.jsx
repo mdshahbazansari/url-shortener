@@ -1,5 +1,4 @@
 import React from 'react'
-import bg from '../../../public/images/bg2.png'
 import { Link } from 'react-router-dom'
 
 const Dashboard = () => {

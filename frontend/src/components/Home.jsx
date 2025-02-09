@@ -27,7 +27,7 @@ const Home = () => {
   // console.log(session)
 
   const handleLogout = async () => {
-    await useSWR('/api/user/logout', fetcher)
+    await useSWR('https://url-shortener-frontend-nntg.onrender.com/api/user/logout', fetcher)
     navigate('/login')
     toast.success('Logout success')
   }
