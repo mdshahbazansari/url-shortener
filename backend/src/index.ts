@@ -26,7 +26,12 @@ app.listen(PORT, () => {
   console.log(`Server run on PORT : ${PORT} 👈🏻`)
 })
 
-app.use(cors())
+app.use(
+  cors({
+    origin: process.env.DOMAIN,
+    credentials: true,
+  })
+)
 
 app.use(cookieParser())
 
