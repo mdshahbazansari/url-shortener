@@ -1,5 +1,4 @@
-import * as dotenv from 'dotenv'
-dotenv.config()
+
 
 import { Request, Response } from 'express'
 import UserModel from './userModel'
@@ -57,21 +56,11 @@ export const Login = async (req: Request, res: Response) => {
 
     res.cookie('accessToken', accessToken, {
       maxAge: oneDay,
-      domain:
-        process.env.NODE_ENV === 'dev'
-          ? 'localhost'
-          : 'https://url-shortener-frontend-nntg.onrender.com',
-      secure: process.env.NODE_ENV === 'dev' ? false : true,
       httpOnly: true,
     })
 
     res.cookie('refreshToken', refreshToken, {
       maxAge: sevenDay,
-      domain:
-        process.env.NODE_ENV === 'dev'
-          ? 'localhost'
-          : 'https://url-shortener-frontend-nntg.onrender.com',
-      secure: process.env.NODE_ENV === 'dev' ? false : true,
       httpOnly: true,
     })
 
