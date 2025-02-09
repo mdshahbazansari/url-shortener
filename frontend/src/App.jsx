@@ -9,6 +9,8 @@ import Context from './util/Context'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import UrlList from './components/app/UrlList'
+import useSWR from 'swr'
+import fetcher from './util/fetcher'
 const ENV = import.meta.env
 
 function App() {
@@ -16,12 +18,7 @@ function App() {
 
   const getSession = async () => {
     try {
-      const { data } = await axios.get(
-        'https://url-shortener-9mko.onrender.com/api/session',
-        {
-          withCredentials: true,
-        }
-      )
+      const { data } = await useSWR('/api/session', fetcher)
 
       setSession(data)
       return data

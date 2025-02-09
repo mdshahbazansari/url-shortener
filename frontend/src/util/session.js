@@ -1,9 +1,12 @@
 const getSession = async () => {
   try {
-    const response = await fetch('http://localhost:5173/api/session', {
-      method: 'GET',
-      credentials: 'true', // Include cookies in the request
-    })
+    const response = await fetch(
+      'https://url-shortener-frontend-nntg.onrender.com/api/session',
+      {
+        method: 'GET',
+        credentials: 'true', // Include cookies in the request
+      }
+    )
 
     if (!response.ok) {
       throw new Error('Failed to fetch session data!')
