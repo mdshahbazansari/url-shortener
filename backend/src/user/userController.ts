@@ -1,3 +1,6 @@
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 import { Request, Response } from 'express'
 import UserModel from './userModel'
 import bcrypt from 'bcrypt'
@@ -29,7 +32,6 @@ const getToken = (user: userInterface) => {
   }
 }
 
-
 export const Signup = async (req: Request, res: Response) => {
   try {
     const user = new UserModel(req.body)
@@ -55,14 +57,20 @@ export const Login = async (req: Request, res: Response) => {
 
     res.cookie('accessToken', accessToken, {
       maxAge: oneDay,
-      domain: process.env.NODE_ENV === 'dev' ? 'localhost' : 'https://url-shortener-frontend-nntg.onrender.com',
+      domain:
+        process.env.NODE_ENV === 'dev'
+          ? 'localhost'
+          : 'https://url-shortener-frontend-nntg.onrender.com',
       secure: process.env.NODE_ENV === 'dev' ? false : true,
       httpOnly: true,
     })
 
     res.cookie('refreshToken', refreshToken, {
       maxAge: sevenDay,
-      domain: process.env.NODE_ENV === 'dev' ? 'localhost' : 'https://url-shortener-frontend-nntg.onrender.com',
+      domain:
+        process.env.NODE_ENV === 'dev'
+          ? 'localhost'
+          : 'https://url-shortener-frontend-nntg.onrender.com',
       secure: process.env.NODE_ENV === 'dev' ? false : true,
       httpOnly: true,
     })
@@ -77,14 +85,20 @@ export const Login = async (req: Request, res: Response) => {
 export const LogoutUser = (req: Request, res: Response) => {
   res.cookie('accessToken', null, {
     maxAge: 0,
-    domain: process.env.NODE_ENV === 'dev' ? 'localhost' : 'https://url-shortener-frontend-nntg.onrender.com',
+    domain:
+      process.env.NODE_ENV === 'dev'
+        ? 'localhost'
+        : 'https://url-shortener-frontend-nntg.onrender.com',
     secure: process.env.NODE_ENV === 'dev' ? false : true,
     httpOnly: true,
   })
 
   res.cookie('refreshToken', null, {
     maxAge: 0,
-    domain: process.env.NODE_ENV === 'dev' ? 'localhost' : 'https://url-shortener-frontend-nntg.onrender.com',
+    domain:
+      process.env.NODE_ENV === 'dev'
+        ? 'localhost'
+        : 'https://url-shortener-frontend-nntg.onrender.com',
     secure: process.env.NODE_ENV === 'dev' ? false : true,
     httpOnly: true,
   })
