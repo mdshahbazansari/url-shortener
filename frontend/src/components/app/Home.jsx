@@ -11,12 +11,12 @@ import {
 import useSWR, { mutate } from 'swr'
 const ENV = import.meta.env
 import { Avatar, Layout, Menu, Tag, theme } from 'antd'
-import UrlShortner from './app/UrlShortner'
+import UrlShortner from './UrlShortner'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import axios from 'axios'
-import Context from '../util/Context'
-import fetcher from '../util/fetcher'
+import fetcher from '../../util/fetcher'
+import Context from '../../util/Context'
 const { Header, Content, Footer, Sider } = Layout
 
 const Home = () => {
@@ -27,7 +27,7 @@ const Home = () => {
   // console.log(session)
 
   const handleLogout = async () => {
-    await useSWR('https://url-shortener-frontend-nntg.onrender.com/api/user/logout', fetcher)
+    await useSWR('/api/user/logout', fetcher)
     navigate('/login')
     toast.success('Logout success')
   }
@@ -57,7 +57,7 @@ const Home = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken()
 
-  if (!session) return navigate('/')
+  // if (!session) return navigate('/')
 
   return (
     <Layout>

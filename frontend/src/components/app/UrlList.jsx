@@ -16,12 +16,7 @@ const UrlList = () => {
     data: urldata,
     error: urlErr,
     isLoading: urlLoading,
-  } = useSWR(
-    session?.id
-      ? `/api/url/analytics/${session.id}`
-      : null,
-    fetcher
-  )
+  } = useSWR(session?.id ? `/api/url/analytics/${session.id}` : null, fetcher)
 
   // Mapping the API data properly
   const data = urldata
@@ -114,11 +109,6 @@ const UrlList = () => {
     },
   ]
 
-  const home = () => {
-    navigate('/home')
-    mutate('/home')
-  }
-
   if (!session) return navigate('/')
 
   return (
@@ -139,7 +129,7 @@ const UrlList = () => {
           </Button>
           <Button onClick={clearFilters}>Clear Filters</Button>
           <Button onClick={clearAll}>Clear All</Button>
-          <Button onClick={home} className='!bg-green-200'>
+          <Button onClick={() => navigate('/home')} className='!bg-green-200'>
             Short New URL's
           </Button>
         </Space>
