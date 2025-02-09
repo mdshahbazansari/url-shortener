@@ -10,17 +10,20 @@ const Login = () => {
 
   const login = async (values) => {
     try {
-      await axios.post('https://url-shortener-9mko.onrender.com/api/user/login', values, {
-        headers: { 'Content-Type': 'application/json' },
-        withCredentials: true,
-      })
+      await axios.post(
+        'https://url-shortener-9mko.onrender.com/api/user/login',
+        values,
+        {
+          headers: { 'Content-Type': 'application/json' },
+          withCredentials: true,
+        }
+      )
 
       navigate('/home')
       message.success('Login Successful')
     } catch (err) {
-      message.error(
-        err.response?.data?.message || 'Login failed || check email & password'
-      )
+      // message.error( err.response?.data?.message || 'Login failed || check email & password')
+      message.error(err.response ? err.response.data.message : err.message)
     }
   }
 
