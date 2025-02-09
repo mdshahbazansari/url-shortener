@@ -12,7 +12,7 @@ import useSWR, { mutate } from 'swr'
 const ENV = import.meta.env
 import { Avatar, Layout, Menu, Tag, theme } from 'antd'
 import UrlShortner from './UrlShortner'
-import { useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import fetcher from '../../util/fetcher'
@@ -110,6 +110,7 @@ const Home = () => {
             }}
           >
             <UrlShortner />
+            <Outlet />
           </div>
         </Content>
         <Footer
