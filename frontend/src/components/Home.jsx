@@ -27,7 +27,7 @@ const Home = () => {
   // console.log(session)
 
   const handleLogout = async () => {
-    await useSWR('/api/user/logout',fetcher)
+    await useSWR('/api/user/logout', fetcher)
     navigate('/login')
     toast.success('Logout success')
   }
@@ -57,7 +57,7 @@ const Home = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken()
 
-  if (!session) return navigate('/')
+  // if (!session) return navigate('/')
 
   return (
     <Layout>

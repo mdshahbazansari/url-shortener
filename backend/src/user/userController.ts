@@ -29,18 +29,6 @@ const getToken = (user: userInterface) => {
   }
 }
 
-export const Session = async (req: Request, res: Response) => {
-  try {
-    const { accessToken } = req.cookies
-
-    if (!accessToken) throw new Error('Unauthorize session !')
-
-    const user = jwt.verify(accessToken, process.env.AUTH_SECRET as string)
-    res.json(user)
-  } catch (err: any) {
-    res.status(500).json({ message: 'Session failed !' })
-  }
-}
 
 export const Signup = async (req: Request, res: Response) => {
   try {
@@ -67,21 +55,21 @@ export const Login = async (req: Request, res: Response) => {
 
     res.cookie('accessToken', accessToken, {
       maxAge: oneDay,
-      // domain: process.env.NODE_ENV === 'dev' ? 'localhost' : process.env.DOMAIN,
-      // secure: process.env.NODE_ENV === 'dev' ? false : true,
+      domain: process.env.NODE_ENV === 'dev' ? 'localhost' : 'https://url-shortener-frontend-nntg.onrender.com',
+      secure: process.env.NODE_ENV === 'dev' ? false : true,
       httpOnly: true,
     })
 
     res.cookie('refreshToken', refreshToken, {
       maxAge: sevenDay,
-      // domain: process.env.NODE_ENV === 'dev' ? 'localhost' : process.env.DOMAIN,
-      // secure: process.env.NODE_ENV === 'dev' ? false : true,
+      domain: process.env.NODE_ENV === 'dev' ? 'localhost' : 'https://url-shortener-frontend-nntg.onrender.com',
+      secure: process.env.NODE_ENV === 'dev' ? false : true,
       httpOnly: true,
     })
 
     res.status(200).json({ message: 'Login success', userId: user._id })
-    // console.log('login')
   } catch (err: any) {
+    console.log(err)
     res.status(500).json(err.message)
   }
 }
@@ -89,15 +77,15 @@ export const Login = async (req: Request, res: Response) => {
 export const LogoutUser = (req: Request, res: Response) => {
   res.cookie('accessToken', null, {
     maxAge: 0,
-    // domain: process.env.NODE_ENV === 'dev' ? 'localhost' : process.env.DOMAIN,
-    // secure: process.env.NODE_ENV === 'dev' ? false : true,
+    domain: process.env.NODE_ENV === 'dev' ? 'localhost' : 'https://url-shortener-frontend-nntg.onrender.com',
+    secure: process.env.NODE_ENV === 'dev' ? false : true,
     httpOnly: true,
   })
 
   res.cookie('refreshToken', null, {
     maxAge: 0,
-    // domain: process.env.NODE_ENV === 'dev' ? 'localhost' : process.env.DOMAIN,
-    // secure: process.env.NODE_ENV === 'dev' ? false : true,
+    domain: process.env.NODE_ENV === 'dev' ? 'localhost' : 'https://url-shortener-frontend-nntg.onrender.com',
+    secure: process.env.NODE_ENV === 'dev' ? false : true,
     httpOnly: true,
   })
   console.log('Logout')
