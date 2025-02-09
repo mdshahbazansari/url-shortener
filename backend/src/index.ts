@@ -28,7 +28,8 @@ app.listen(PORT, () => {
 
 app.use(
   cors({
-    origin: process.env.DOMAIN,
+    origin: "https://url-shortener-frontend-nntg.onrender.com",
+    methods: 'GET,POST,PUT,DELETE',
     credentials: true,
   })
 )

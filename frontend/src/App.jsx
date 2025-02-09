@@ -16,8 +16,8 @@ function App() {
 
   const getSession = async () => {
     try {
-      const { data } = await axios.get(`ENV.BACKEND_URL/api/session`, {
-        withCredentials: true, 
+      const { data } = await axios.get(`${ENV.BACKEND_URL}/api/session`, {
+        withCredentials: true,
       })
 
       setSession(data)
