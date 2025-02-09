@@ -67,20 +67,20 @@ export const Login = async (req: Request, res: Response) => {
 
     res.cookie('accessToken', accessToken, {
       maxAge: oneDay,
-      domain: process.env.NODE_ENV === 'dev' ? 'localhost' : process.env.DOMAIN,
-      secure: process.env.NODE_ENV === 'dev' ? false : true,
+      // domain: process.env.NODE_ENV === 'dev' ? 'localhost' : process.env.DOMAIN,
+      // secure: process.env.NODE_ENV === 'dev' ? false : true,
       httpOnly: true,
     })
 
     res.cookie('refreshToken', refreshToken, {
       maxAge: sevenDay,
-      domain: process.env.NODE_ENV === 'dev' ? 'localhost' : process.env.DOMAIN,
-      secure: process.env.NODE_ENV === 'dev' ? false : true,
+      // domain: process.env.NODE_ENV === 'dev' ? 'localhost' : process.env.DOMAIN,
+      // secure: process.env.NODE_ENV === 'dev' ? false : true,
       httpOnly: true,
     })
 
     res.status(200).json({ message: 'Login success', userId: user._id })
-    console.log('login')
+    // console.log('login')
   } catch (err: any) {
     res.status(500).json(err.message)
   }
@@ -89,15 +89,15 @@ export const Login = async (req: Request, res: Response) => {
 export const LogoutUser = (req: Request, res: Response) => {
   res.cookie('accessToken', null, {
     maxAge: 0,
-    domain: process.env.NODE_ENV === 'dev' ? 'localhost' : process.env.DOMAIN,
-    secure: process.env.NODE_ENV === 'dev' ? false : true,
+    // domain: process.env.NODE_ENV === 'dev' ? 'localhost' : process.env.DOMAIN,
+    // secure: process.env.NODE_ENV === 'dev' ? false : true,
     httpOnly: true,
   })
 
   res.cookie('refreshToken', null, {
     maxAge: 0,
-    domain: process.env.NODE_ENV === 'dev' ? 'localhost' : process.env.DOMAIN,
-    secure: process.env.NODE_ENV === 'dev' ? false : true,
+    // domain: process.env.NODE_ENV === 'dev' ? 'localhost' : process.env.DOMAIN,
+    // secure: process.env.NODE_ENV === 'dev' ? false : true,
     httpOnly: true,
   })
   console.log('Logout')

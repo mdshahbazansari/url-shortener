@@ -23,7 +23,6 @@ const Login = () => {
       navigate('/home')
       message.success('Login Successful')
     } catch (err) {
-      // message.error( err.response?.data?.message || 'Login failed || check email & password')
       toast.error(err.response ? err.response.data.message : err.message)
     }
   }
