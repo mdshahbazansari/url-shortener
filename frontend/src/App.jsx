@@ -16,9 +16,12 @@ function App() {
 
   const getSession = async () => {
     try {
-      const { data } = await axios.get(`${ENV.VITE_SERVER}/api/session`, {
-        withCredentials: true,
-      })
+      const { data } = await axios.get(
+        'https://url-shortener-9mko.onrender.com/api/session',
+        {
+          withCredentials: true,
+        }
+      )
 
       setSession(data)
       return data
