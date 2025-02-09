@@ -57,7 +57,7 @@ const Home = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken()
 
-  if (!session) return navigate('/')
+  // if (!session) return navigate('/')
 
   return (
     <Layout>
