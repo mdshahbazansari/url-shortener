@@ -2,6 +2,7 @@ import { Button, Card, Form, Input, message } from 'antd'
 import React from 'react'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 const ENV = import.meta.env
 axios.defaults.baseURL = ENV.VITE_SERVER
 
@@ -23,7 +24,7 @@ const Login = () => {
       message.success('Login Successful')
     } catch (err) {
       // message.error( err.response?.data?.message || 'Login failed || check email & password')
-      message.error(err.response ? err.response.data.message : err.message)
+      toast.error(err.response ? err.response.data.message : err.message)
     }
   }
 
